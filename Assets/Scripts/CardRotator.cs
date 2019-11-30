@@ -5,12 +5,20 @@ using UnityEngine;
 public class CardRotator : MonoBehaviour
 {
     public Transform anchorTransform;
+    public SpriteRenderer srLeftText;
+    public SpriteRenderer srRightText;
     public float rotationLimit;
     public float cancelSpeed;
 
     public GameObject[] nextCards;
 
     private float mouseSpeed;
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,7 +29,18 @@ public class CardRotator : MonoBehaviour
     private void SwitchCard()
     {
         int i = Random.Range(0, nextCards.Length - 1);
-        Instantiate(nextCards[i], transform.position, Quaternion.identity);
+        Instantiate(nextCards[i], new Vector3(0f, 0f, 0f), Quaternion.identity);
+    }
+
+    private void DisplayTexts(float z)
+    {
+        Color clt = srLeftText.color;
+        clt.a = (z - (rotationLimit - 5f)) / 5f;
+        srLeftText.color = clt;
+
+        Color crt = srRightText.color;
+        crt.a = (z + (rotationLimit - 5f)) / -5f;
+        srRightText.color = crt;
     }
 
     private void RotateCard(float z) // Effectue la rotation de la carte. La valeur de la rotation est z
@@ -56,11 +75,13 @@ public class CardRotator : MonoBehaviour
         }
     }
 
+
     private void OnMouseDrag() // Tant que la souris est enfoncée sur la carte
     {
         StopCoroutine("CancelRotation"); // arrête la potentielle interpolation
 
         float z = GetAngle(anchorTransform.eulerAngles.z); // récupère la rotation actuelle
+        DisplayTexts(z);
 
         z += -mouseSpeed * 2; // ajoute une rotation relative à la vitesse de la souris
 
@@ -74,18 +95,16 @@ public class CardRotator : MonoBehaviour
     {
         float z = GetAngle(anchorTransform.eulerAngles.z); // récupère la rotation actuelle
 
-        if(z > rotationLimit - 3f || z < -rotationLimit + 3)
+        if(z > rotationLimit - 5f || z < -rotationLimit + 5f)
         {
-            Destroy(transform.root.gameObject);
+            SwitchCard();
+            Camera.main.GetComponent<Animator>().Play("shake");
+            rb.gravityScale = 20f;
+            Destroy(transform.root.gameObject, 0.4f);
         }
         else
         {
             StartCoroutine("CancelRotation");
         }
-    }
-
-    private void OnDestroy()
-    {
-        SwitchCard();
     }
 }
