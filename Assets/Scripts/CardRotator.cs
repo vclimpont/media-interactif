@@ -8,12 +8,20 @@ public class CardRotator : MonoBehaviour
     public float rotationLimit;
     public float cancelSpeed;
 
-    float mouseSpeed;
+    public GameObject[] nextCards;
+
+    private float mouseSpeed;
 
     // Update is called once per frame
     void Update()
     {
         mouseSpeed = Input.GetAxis("Mouse X"); // Recupère la vitesse de la souris en X ( < 0 si dép. vers la gauche | > 0 si dép. vers la droite)
+    }
+
+    private void SwitchCard()
+    {
+        int i = Random.Range(0, nextCards.Length - 1);
+        Instantiate(nextCards[i], transform.position, Quaternion.identity);
     }
 
     private void RotateCard(float z) // Effectue la rotation de la carte. La valeur de la rotation est z
@@ -64,6 +72,20 @@ public class CardRotator : MonoBehaviour
 
     private void OnMouseUp() // Lorsque la souris est relachée de la carte
     {
-        StartCoroutine("CancelRotation");
+        float z = GetAngle(anchorTransform.eulerAngles.z); // récupère la rotation actuelle
+
+        if(z > rotationLimit - 3f || z < -rotationLimit + 3)
+        {
+            Destroy(transform.root.gameObject);
+        }
+        else
+        {
+            StartCoroutine("CancelRotation");
+        }
+    }
+
+    private void OnDestroy()
+    {
+        SwitchCard();
     }
 }
