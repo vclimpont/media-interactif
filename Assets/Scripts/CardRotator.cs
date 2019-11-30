@@ -38,10 +38,9 @@ public class CardRotator : MonoBehaviour
         Quaternion currRot = anchorTransform.rotation; // récupère la rotation actuelle de la carte
         Quaternion rotZero = Quaternion.Euler(Vector3.zero); // définie la rotation cible (0,0,0)
         float start = Time.time; // récupère le temps actuel
-        float t = start;
-        float end = start + cancelSpeed; // définie le temps de rotation souhaité
+        float t = 0;
 
-        while(t < end)
+        while(t < 1)
         {
             t = (Time.time - start) / cancelSpeed;
             anchorTransform.rotation = Quaternion.Lerp(currRot, rotZero, t);
