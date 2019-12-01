@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CardRotator : MonoBehaviour
@@ -28,7 +27,7 @@ public class CardRotator : MonoBehaviour
 
     private void SwitchCard()
     {
-        int i = Random.Range(0, nextCards.Length - 1);
+        int i = Random.Range(0, nextCards.Length);
         Instantiate(nextCards[i], new Vector3(0f, 0f, 0f), Quaternion.identity);
     }
 
