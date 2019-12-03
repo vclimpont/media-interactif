@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1b498813352846443a1847ebf38f42b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15fb92930fa42de4c996672aa6f34a08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.6, y: 8.6}
+    oldSize: {x: 9.066667, y: 8.677778}
     newSize: {x: 9.144444, y: 9.277778}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -121,12 +121,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorTransform: {fileID: 1250134736009579411}
+  srDesc: {fileID: 1250134735826526060}
   srLeftText: {fileID: 1250134736105946693}
   srRightText: {fileID: 1250134735875687502}
   rotationLimit: 25
   cancelSpeed: 0.1
   nextCards:
-  - {fileID: 5249442626273082972, guid: 3684f59d705e7e64ebbe3fdb2f52bd57, type: 3}
+  - {fileID: 6941693519900459969, guid: 6d6ddce9d36f7f1498e2fd77959614f0, type: 3}
 --- !u!50 &6516738261416273662
 Rigidbody2D:
   serializedVersion: 4
@@ -173,7 +174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250134735826526058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 7.16, z: 0}
+  m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1250134736627111146}
@@ -216,15 +217,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3658f1866d8685d47bee4219e4fe168d, type: 3}
+  m_Sprite: {fileID: 21300004, guid: ee1e9a16dc1e62849b65ce973d03aaac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.3333335, y: 4.3333335}
+  m_Size: {x: 9.188889, y: 2.2666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1250134735875687500

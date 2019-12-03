@@ -4,6 +4,7 @@ using UnityEngine;
 public class CardRotator : MonoBehaviour
 {
     public Transform anchorTransform;
+    public SpriteRenderer srDesc;
     public SpriteRenderer srLeftText;
     public SpriteRenderer srRightText;
     public float rotationLimit;
@@ -13,10 +14,12 @@ public class CardRotator : MonoBehaviour
 
     private float mouseSpeed;
     private Rigidbody2D rb;
+    private BoxCollider2D coll;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        coll = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -96,9 +99,11 @@ public class CardRotator : MonoBehaviour
 
         if(z > rotationLimit - 5f || z < -rotationLimit + 5f)
         {
-            SwitchCard();
+            coll.enabled = false;
             Camera.main.GetComponent<Animator>().Play("shake");
+            srDesc.enabled = false;
             rb.gravityScale = 20f;
+            SwitchCard();
             Destroy(transform.root.gameObject, 0.4f);
         }
         else
