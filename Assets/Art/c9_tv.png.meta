@@ -88,10 +88,10 @@ TextureImporter:
       name: c9_tv_0
       rect:
         serializedVersion: 2
-        x: 99
-        y: 74
-        width: 842
-        height: 773
+        x: 104
+        y: 76
+        width: 768
+        height: 769
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,7 +99,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a8e496bc42810442b597563b9e59b98
+      spriteID: 55b4b2eff6171ed4a8eda7ea2d428147
       vertices: []
       indices: 
       edges: []
